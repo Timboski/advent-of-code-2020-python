@@ -29,5 +29,7 @@ if __name__ == "__main__":
     repair = ReportRepair()
     input_data = repair.read_report(
         "/workspaces/advent-of-code-2020-python/advent2020/day1/input")
-    result = repair.find_2_numbers(input_data)
-    print(result)
+
+    repair.find_2_numbers(input_data)
+
+    repair.find_3_numbers(input_data)
