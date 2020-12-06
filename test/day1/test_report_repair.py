@@ -1,5 +1,7 @@
 import unittest
 
+from advent2020.day1.report_repair import ReportRepair
+
 
 class TestReportRepair(unittest.TestCase):
     def test_example_data_should_give_same_result(self):
