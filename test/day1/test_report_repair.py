@@ -10,7 +10,7 @@ class TestReportRepair(unittest.TestCase):
         sut = ReportRepair()
 
         # Act
-        result = sut.parse(input_data)
+        result = sut.find_2_numbers(input_data)
 
         # Assert
         self.assertEqual(result, 514579)
@@ -26,3 +26,14 @@ class TestReportRepair(unittest.TestCase):
 
         # Assert
         self.assertSequenceEqual(data, input_data)
+
+    def test_find_three_numbers_should_give_example_result(self):
+        # Arrange
+        input_data = [1721, 979, 366, 299, 675, 1456]
+        sut = ReportRepair()
+
+        # Act
+        result = sut.find_3_numbers(input_data)
+
+        # Assert
+        self.assertEqual(result, 241861950)
