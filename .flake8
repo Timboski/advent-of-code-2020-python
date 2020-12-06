@@ -1,0 +1,10 @@
+[flake8]
+ignore =
+    # continuation line over-indented for hanging indent (YAPF)
+    E126,
+    # visually indented line with same indent as next logical line (YAPF)
+    E129,
+    # Line breaks before/after binary operators (YAPF)
+    W503, W504
+
+max-line-length=88
