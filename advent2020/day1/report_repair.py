@@ -14,4 +14,7 @@ class ReportRepair(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    pass
+    repair = ReportRepair()
+    input_data = repair.read_report("/workspaces/advent-of-code-2020-python/advent2020/day1/input")
+    result = repair.parse(input_data)
+    print(result)
