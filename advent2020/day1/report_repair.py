@@ -7,6 +7,8 @@ class ReportRepair(unittest.TestCase):
         for entry1 in entries:
             for entry2 in entries:
                 if entry1 + entry2 == 2020:
+                    print(f"{entry1} + {entry2} = 2020")
+                    print(f"{entry1} * {entry2} = {entry1 * entry2}")
                     return entry1 * entry2
 
     def read_report(self, path: str) -> List[int]:
