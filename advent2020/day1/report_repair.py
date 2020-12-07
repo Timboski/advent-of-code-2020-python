@@ -4,12 +4,13 @@ from typing import Set
 
 class ReportRepair(unittest.TestCase):
     def find_2_numbers(self, entries: Set[int]) -> int:
-        for entry1 in entries:
-            for entry2 in entries:
-                if entry1 + entry2 == 2020:
-                    print(f"{entry1} + {entry2} = 2020")
-                    print(f"{entry1} * {entry2} = {entry1 * entry2}")
-                    return entry1 * entry2
+        for entry in entries:
+            remainder = 2020 - entry
+            if remainder in entries:
+                result = entry * remainder
+                print(f"{entry} + {remainder} = 2020")
+                print(f"{entry} * {remainder} = {result}")
+                return result
 
     def find_3_numbers(self, entries: Set[int]) -> int:
         for entry1 in entries:
