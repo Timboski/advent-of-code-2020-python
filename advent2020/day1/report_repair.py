@@ -16,7 +16,8 @@ class ReportRepair(unittest.TestCase):
                 return self._print_and_return_answer(entry, *result)
 
     def read_report(self, path: str) -> Set[int]:
-        return {int(entry) for entry in list(open(path))}
+        with open(path) as stream:
+            return {int(entry) for entry in list(stream)}
 
     def _find_two_numbers(self, entries: Set[int], target: int) -> Tuple[int]:
         for entry in entries:
