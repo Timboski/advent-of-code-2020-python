@@ -5,16 +5,15 @@ from typing import Set, Tuple
 
 class ReportRepair(unittest.TestCase):
     def find_2_numbers(self, entries: Set[int]) -> int:
-        (num1, num2) = self._find_two_numbers(entries, 2020)
-        return self._print_and_return_answer(num1, num2)
+        result = self._find_two_numbers(entries, 2020)
+        return self._print_and_return_answer(*result)
 
     def find_3_numbers(self, entries: Set[int]) -> int:
         for entry in entries:
             remainder = 2020 - entry
             result = self._find_two_numbers(entries, remainder)
             if result:
-                (num1, num2) = result
-                return self._print_and_return_answer(entry, num1, num2)
+                return self._print_and_return_answer(entry, *result)
 
     def read_report(self, path: str) -> Set[int]:
         return {int(entry) for entry in list(open(path))}
