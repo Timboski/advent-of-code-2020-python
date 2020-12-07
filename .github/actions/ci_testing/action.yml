@@ -1,0 +1,5 @@
+name: 'Run CI Tests'
+description: 'Run Unit Tests and check code'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

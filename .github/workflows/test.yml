@@ -1,0 +1,11 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:    
+    runs-on: ubuntu-latest
+    name: CI Test
+    steps:
+      - name: Run Tests
+        uses: ./.github/actions/ci_testing
