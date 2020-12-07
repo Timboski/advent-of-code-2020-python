@@ -1,29 +1,34 @@
 import unittest
-from typing import Set
+from typing import Set, Tuple
 
 
 class ReportRepair(unittest.TestCase):
     def find_2_numbers(self, entries: Set[int]) -> int:
-        for entry in entries:
-            remainder = 2020 - entry
-            if remainder in entries:
-                result = entry * remainder
-                print(f"{entry} + {remainder} = 2020")
-                print(f"{entry} * {remainder} = {result}")
-                return result
+        (num1, num2) = self._find_two_numbers(entries, 2020)
+        result = num1 * num2
+        print(f"{num1} + {num2} = 2020")
+        print(f"{num1} * {num2} = {result}")
+        return result
 
     def find_3_numbers(self, entries: Set[int]) -> int:
-        for entry1 in entries:
-            for entry2 in entries:
-                for entry3 in entries:
-                    if entry1 + entry2 + entry3 == 2020:
-                        answer = entry1 * entry2 * entry3
-                        print(f"{entry1} + {entry2} + {entry3} = 2020")
-                        print(f"{entry1} * {entry2} * {entry3}  = {answer}")
-                        return answer
+        for entry in entries:
+            remainder = 2020 - entry
+            result = self._find_two_numbers(entries, remainder)
+            if result:
+                (num1, num2) = result
+                answer = entry * num1 * num2
+                print(f"{entry} + {num1} + {num2} = 2020")
+                print(f"{entry} * {num1} * {num2}  = {answer}")
+                return answer
 
     def read_report(self, path: str) -> Set[int]:
         return {int(entry) for entry in list(open(path))}
+
+    def _find_two_numbers(self, entries: Set[int], target: int) -> Tuple[int]:
+        for entry in entries:
+            remainder = target - entry
+            if remainder in entries:
+                return (entry, remainder)
 
 
 if __name__ == "__main__":
