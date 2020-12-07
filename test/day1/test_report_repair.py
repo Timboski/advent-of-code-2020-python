@@ -18,8 +18,7 @@ class TestReportRepair(unittest.TestCase):
     def test_read_file_to_a_set(self):
         # Arrange
         input_data = {1721, 979, 366, 299, 675, 1456}
-        input_data_path = \
-            "/workspaces/advent-of-code-2020-python/test/day1/example_report"
+        input_data_path = "test/day1/example_report"
         sut = ReportRepair()
 
         # Act
