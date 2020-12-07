@@ -1,9 +1,9 @@
 import unittest
-from typing import List
+from typing import Set
 
 
 class ReportRepair(unittest.TestCase):
-    def find_2_numbers(self, entries: List[int]) -> int:
+    def find_2_numbers(self, entries: Set[int]) -> int:
         for entry1 in entries:
             for entry2 in entries:
                 if entry1 + entry2 == 2020:
@@ -11,7 +11,7 @@ class ReportRepair(unittest.TestCase):
                     print(f"{entry1} * {entry2} = {entry1 * entry2}")
                     return entry1 * entry2
 
-    def find_3_numbers(self, entries: List[int]) -> int:
+    def find_3_numbers(self, entries: Set[int]) -> int:
         for entry1 in entries:
             for entry2 in entries:
                 for entry3 in entries:
@@ -21,8 +21,8 @@ class ReportRepair(unittest.TestCase):
                         print(f"{entry1} * {entry2} * {entry3}  = {answer}")
                         return answer
 
-    def read_report(self, path: str) -> List[int]:
-        return [int(entry) for entry in list(open(path))]
+    def read_report(self, path: str) -> Set[int]:
+        return {int(entry) for entry in list(open(path))}
 
 
 if __name__ == "__main__":
