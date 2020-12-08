@@ -19,4 +19,6 @@ class PasswordValidation:
 
 
 if __name__ == "__main__":
-    pass
+    path = "/workspaces/advent-of-code-2020-python/advent2020/day2/input"
+    validator = PasswordValidation()
+    print(validator.count_valid_entries_in_file(path))

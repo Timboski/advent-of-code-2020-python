@@ -58,3 +58,14 @@ class TestPasswordValidation(unittest.TestCase):
 
         # Assert
         self.assertEqual(count, 2)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        example_data_path = "advent2020/day2/input"
+        sut = PasswordValidation()
+
+        # Act
+        count = sut.count_valid_entries_in_file(example_data_path)
+
+        # Assert
+        self.assertEqual(count, 536)
