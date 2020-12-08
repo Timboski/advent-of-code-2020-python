@@ -35,7 +35,7 @@ class TestPasswordValidation(unittest.TestCase):
 
         # Assert
         self.assertTrue(result)
-        
+
     def test_read_file_to_a_list(self):
         # Arrange
         example_data = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]
