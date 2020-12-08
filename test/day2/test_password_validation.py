@@ -43,7 +43,18 @@ class TestPasswordValidation(unittest.TestCase):
         sut = PasswordValidation()
 
         # Act
-        data = sut.read_report(example_data_path)
+        data = sut.read_entries_from_file(example_data_path)
 
         # Assert
         self.assertSequenceEqual(data, example_data)
+
+    def test_count_vaild_entries_in_examaple_data_file(self):
+        # Arrange
+        example_data_path = "test/day2/example_data"
+        sut = PasswordValidation()
+
+        # Act
+        count = sut.count_valid_entries_in_file(example_data_path)
+
+        # Assert
+        self.assertEqual(count, 2)

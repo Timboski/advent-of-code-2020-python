@@ -9,9 +9,13 @@ class PasswordValidation:
         occurances = p.password.count(p.letter)
         return (occurances >= p.min) and (occurances <= p.max)
 
-    def read_report(self, path: str) -> List[int]:
+    def read_entries_from_file(self, path: str) -> List[int]:
         with open(path) as stream:
             return [entry.strip() for entry in list(stream)]
+
+    def count_valid_entries_in_file(self, path: str) -> int:
+        entries = self.read_entries_from_file(path)
+        return sum(1 for entry in entries if self.validate(entry))
 
 
 if __name__ == "__main__":
