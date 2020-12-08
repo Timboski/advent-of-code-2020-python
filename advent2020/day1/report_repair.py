@@ -1,9 +1,8 @@
 import math
-import unittest
 from typing import Set, Tuple
 
 
-class ReportRepair(unittest.TestCase):
+class ReportRepair:
     def find_2_numbers(self, entries: Set[int]) -> int:
         result = self._find_two_numbers(entries, 2020)
         return self._print_and_return_answer(*result)
