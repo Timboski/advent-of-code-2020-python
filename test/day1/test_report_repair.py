@@ -37,3 +37,25 @@ class TestReportRepair(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, 241861950)
+
+    def test_check_puzzle1_solution(self):
+        # Arrange
+        sut = ReportRepair()
+        input_data = sut.read_report("advent2020/day1/input")
+
+        # Act
+        result = sut.find_2_numbers(input_data)
+
+        # Assert
+        self.assertEqual(result, 633216)
+
+    def test_check_puzzle2_solution(self):
+        # Arrange
+        sut = ReportRepair()
+        input_data = sut.read_report("advent2020/day1/input")
+
+        # Act
+        result = sut.find_3_numbers(input_data)
+
+        # Assert
+        self.assertEqual(result, 68348924)
