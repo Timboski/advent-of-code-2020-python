@@ -14,9 +14,3 @@ class Puzzle2Validation(PasswordValidation):
         if index >= len(password):
             return False
         return password[index] is letter
-
-
-if __name__ == "__main__":
-    path = "/workspaces/advent-of-code-2020-python/advent2020/day2/input"
-    validator = Puzzle2Validation()
-    print(validator.count_valid_entries_in_file(path))
