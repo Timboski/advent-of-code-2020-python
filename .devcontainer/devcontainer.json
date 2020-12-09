@@ -34,6 +34,9 @@
 		"python.testing.nosetestsEnabled": false,
 		"python.testing.unittestEnabled": true,
 
+		// Don't ask to trust Jupyter notebook
+		"jupyter.alwaysTrustNotebooks": true,
+
 		// Set the editor font
 		"editor.fontFamily": "Cascadia Code",
 		"editor.fontLigatures": true,
