@@ -6,4 +6,5 @@ FROM python:3.9.0
 # - flake8: Coding standard checker
 # - rope: Python refatoring library
 # - parameterized: Allow parameterised Unit Tests
-RUN pip install yapf flake8 rope parameterized
+# - ipykernel: For Jupyter notebooks
+RUN pip install yapf flake8 rope parameterized ipykernel
