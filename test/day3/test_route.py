@@ -55,3 +55,18 @@ class TestRoute(unittest.TestCase):
 
         # Assert
         self.assertEqual(trees_encountered, 336)
+
+    def test_validate_puzzle2_answer(self):
+        # Arrange
+        example_input = "advent2020/day3/input"
+        sut = Route(example_input)
+
+        # Act
+        trees_encountered = sut.toboggan_run(1, 1)  # Right 1, down 1.
+        trees_encountered *= sut.toboggan_run(3, 1)  # Right 3, down 1.
+        trees_encountered *= sut.toboggan_run(5, 1)  # Right 5, down 1.
+        trees_encountered *= sut.toboggan_run(7, 1)  # Right 7, down 1.
+        trees_encountered *= sut.toboggan_run(1, 2)  # Right 1, down 2.
+
+        # Assert
+        self.assertEqual(trees_encountered, 1206576000)
