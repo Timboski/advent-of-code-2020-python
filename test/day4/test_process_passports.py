@@ -35,3 +35,25 @@ class TestProcessPassports(unittest.TestCase):
 
         # Assert
         self.assertEqual(valid, 264)
+
+    def test_invalid_passport_contents(self):
+        # Arrange
+        passport_file_path = "test/day4/invalid_passports"
+        sut = ProcessPassports(passport_file_path)
+
+        # Act
+        valid = sut.validate_passports()
+
+        # Assert
+        self.assertEqual(valid, 0)
+
+    def test_valid_passport_contents(self):
+        # Arrange
+        passport_file_path = "test/day4/valid_passports"
+        sut = ProcessPassports(passport_file_path)
+
+        # Act
+        valid = sut.validate_passports()
+
+        # Assert
+        self.assertEqual(valid, 4)
