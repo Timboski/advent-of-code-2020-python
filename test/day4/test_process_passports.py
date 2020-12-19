@@ -24,3 +24,14 @@ class TestProcessPassports(unittest.TestCase):
 
         # Assert
         self.assertEqual(valid, 2)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        input = "advent2020/day4/input"
+        sut = ProcessPassports(input)
+
+        # Act
+        valid = sut.validate_passports()
+
+        # Assert
+        self.assertEqual(valid, 264)
