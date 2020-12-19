@@ -17,6 +17,9 @@ class ProcessPassports:
     def num_passports(self) -> int:
         return len(self._passports)
 
+    def validate_passports(self) -> int:
+        return len([passport for passport in self._passports if passport.validate()])
+
     @staticmethod
     def _read_file(path: str) -> List[str]:
         with open(path) as stream:
