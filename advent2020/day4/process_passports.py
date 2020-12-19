@@ -5,13 +5,17 @@ from advent2020.day4.passport import Passport
 
 
 class ProcessPassports:
-    def __init__(self, passport_file_path: str) -> None:
+    def __init__(self,
+                 passport_file_path: str,
+                 *,
+                 validate_contents: bool = True) -> None:
         self._passports = []
         lines = self._read_file(passport_file_path)
         entries = deque(lines)
 
         while entries:
-            self._passports.append(Passport(entries))
+            self._passports.append(
+                Passport(entries, validate_contents=validate_contents))
 
     @property
     def num_passports(self) -> int:

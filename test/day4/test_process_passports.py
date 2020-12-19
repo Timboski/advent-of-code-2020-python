@@ -17,7 +17,7 @@ class TestProcessPassports(unittest.TestCase):
     def test_validate_2_passports_from_example_data(self):
         # Arrange
         passport_file_path = "test/day4/example_passports"
-        sut = ProcessPassports(passport_file_path)
+        sut = ProcessPassports(passport_file_path, validate_contents=False)
 
         # Act
         valid = sut.validate_passports()
@@ -28,7 +28,7 @@ class TestProcessPassports(unittest.TestCase):
     def test_validate_puzzle1_answer(self):
         # Arrange
         input = "advent2020/day4/input"
-        sut = ProcessPassports(input)
+        sut = ProcessPassports(input, validate_contents=False)
 
         # Act
         valid = sut.validate_passports()
