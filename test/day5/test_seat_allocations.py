@@ -14,3 +14,14 @@ class TestSeatAllocations(unittest.TestCase):
 
         # Assert
         self.assertEqual(max, 820)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day5/input"
+        sut = SeatAllocations(path)
+
+        # Act
+        max = sut.find_max_occupied()
+
+        # Assert
+        self.assertEqual(max, 888)
