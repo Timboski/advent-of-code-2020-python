@@ -15,3 +15,8 @@ class SeatIdentifier:
     @property
     def column(self) -> int:
         return int(self._column, 2)
+
+    @property
+    def id(self) -> int:
+        seat_id = self._row + self._column
+        return int(seat_id, 2)

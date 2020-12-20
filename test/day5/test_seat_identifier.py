@@ -26,3 +26,12 @@ class TestSeatIdentifier(unittest.TestCase):
 
         # Assert
         self.assertEqual(sut.column, expected_column)
+
+    @parameterized.expand([("BFFFBBFRRR", 567), ("FFFBBBFRRR", 119),
+                           ("BBFFBBFRLL", 820)])
+    def test_seat_identifier_return_expected_id(self, seat_id: str, expected_id: int):
+        # Arrange, Act
+        sut = SeatIdentifier(seat_id)
+
+        # Assert
+        self.assertEqual(sut.id, expected_id)
