@@ -11,9 +11,10 @@ class SeatAllocations:
 
     def find_empty_seat(self) -> int:
         id = [seat.id for seat in self._seats]
-        start = min(id)
-        stop = max(id)
-        for seat in range(start, stop):
-            if seat not in id:
-                return seat
+        id.sort()
+        start = id[0]
+        for index, next_full in enumerate(id):
+            next_seat = index + start
+            if next_full != next_seat:
+                return next_seat
         raise ValueError("Seat not found")
