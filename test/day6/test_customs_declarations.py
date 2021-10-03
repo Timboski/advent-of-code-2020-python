@@ -14,3 +14,14 @@ class TestCustomsDeclarations(unittest.TestCase):
 
         # Assert
         self.assertEqual(res, 11)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day6/input"
+        sut = CustomsDeclarations(path)
+
+        # Act
+        res = sut.yes_count()
+
+        # Assert
+        self.assertEqual(res, 6565)
