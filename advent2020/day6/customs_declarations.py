@@ -16,3 +16,17 @@ class CustomsDeclarations:
                 group.update({id for id in line})
         total_count += len(group)
         return total_count
+
+    def all_yes_count(self):
+        total_count = 0
+        group = None
+        for line in self._entries:
+            if line == "":
+                total_count += len(group)
+                group = None
+            elif group is None:
+                group = {id for id in line}
+            else:
+                group = group.intersection({id for id in line})
+        total_count += len(group)
+        return total_count
