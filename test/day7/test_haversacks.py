@@ -14,3 +14,14 @@ class TestHaversacks(unittest.TestCase):
 
         # Assert
         self.assertEqual(res, 4)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day7/input"
+        sut = Haversacks(path)
+
+        # Act
+        res = sut.num_colour_options()
+
+        # Assert
+        self.assertEqual(res, 289)
