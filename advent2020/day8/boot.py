@@ -24,7 +24,7 @@ class Boot:
         if prog_counter != self.len:
             raise ValueError("Prog Counter past end of code")
         return acc
-    
+
     def fix_instruction(self, index: int) -> None:
         self._code[index].fix()
 
