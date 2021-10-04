@@ -1,5 +1,4 @@
 from typing import Tuple
-from unittest import case
 
 
 class Instruction:
@@ -18,3 +17,9 @@ class Instruction:
         if self.op == "jmp":
             return self.index + self.value, acc
         raise ValueError(f"Unexpected op code: {self.op}")
+
+    def fix(self) -> None:
+        if self.op == "nop":
+            self.op = "jmp"
+        elif self.op == "jmp":
+            self.op = "nop"
