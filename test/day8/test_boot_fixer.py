@@ -14,3 +14,14 @@ class TestBootFixer(unittest.TestCase):
 
         # Assert
         self.assertEqual(acc, 8)
+
+    def test_validate_puzzle2_answer(self):
+        # Arrange
+        path = "advent2020/day8/input"
+        sut = BootFixer(path)
+
+        # Act
+        acc = sut.fix_and_run()
+
+        # Assert
+        self.assertEqual(acc, 1688)
