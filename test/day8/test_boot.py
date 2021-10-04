@@ -14,3 +14,14 @@ class TestBoot(unittest.TestCase):
 
         # Assert
         self.assertEqual(acc, 5)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day8/input"
+        sut = Boot(path)
+
+        # Act
+        acc = sut.find_acc_at_loop()
+
+        # Assert
+        self.assertEqual(acc, 1930)
