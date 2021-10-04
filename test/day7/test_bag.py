@@ -35,4 +35,4 @@ class TestBag(unittest.TestCase):
 
         # Assert
         self.assertEqual(sut.colour, colour)
-        self.assertSetEqual(sut.contents, contents)
+        self.assertSetEqual(set(sut.contents), contents)

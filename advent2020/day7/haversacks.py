@@ -10,3 +10,6 @@ class Haversacks:
     def num_colour_options(self) -> int:
         return sum(
             [1 for c in self._bags if self._bags[c].contains("shiny gold", self._bags)])
+
+    def num_bags(self) -> int:
+        return self._bags["shiny gold"].num_bags_inside(self._bags)
