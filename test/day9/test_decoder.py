@@ -1,0 +1,16 @@
+import unittest
+
+from advent2020.day9.decoder import Decoder
+
+
+class TestBoot(unittest.TestCase):
+    def test_example_input(self):
+        # Arrange
+        path = "test/day9/example_input"
+        sut = Decoder(path, 5)
+
+        # Act
+        num = sut.find_first_invalid()
+
+        # Assert
+        self.assertEqual(num, 127)
