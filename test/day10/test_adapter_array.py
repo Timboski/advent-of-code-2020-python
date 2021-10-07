@@ -25,3 +25,14 @@ class TestAdapterArray(unittest.TestCase):
 
         # Assert
         self.assertEqual(num, 220)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day10/input"
+        sut = AdapterArray(path)
+
+        # Act
+        num = sut.find_sum()
+
+        # Assert
+        self.assertEqual(num, 2450)
