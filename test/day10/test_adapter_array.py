@@ -17,3 +17,15 @@ class TestAdapterArray(unittest.TestCase):
 
         # Assert
         self.assertEqual(num, expected_result)
+
+    @parameterized.expand([("Example 1", "test/day10/example_input_1", 8),
+                           ("Example 2", "test/day10/example_input_2", 19208)])
+    def test_puzzle_2(self, test_name: str, path: str, expected_result: int):
+        # Arrange
+        sut = AdapterArray(path)
+
+        # Act
+        num = sut.find_num_combinations()
+
+        # Assert
+        self.assertEqual(num, expected_result)

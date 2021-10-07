@@ -17,3 +17,6 @@ class AdapterArray:
         ones = diffs.count(1)
         threes = diffs.count(3)
         return ones * threes
+
+    def find_num_combinations(self) -> int:
+        pass
