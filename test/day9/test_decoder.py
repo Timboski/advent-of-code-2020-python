@@ -14,3 +14,14 @@ class TestBoot(unittest.TestCase):
 
         # Assert
         self.assertEqual(num, 127)
+
+    def test_validate_puzzle1_answer(self):
+        # Arrange
+        path = "advent2020/day9/input"
+        sut = Decoder(path, 25)
+
+        # Act
+        num = sut.find_first_invalid()
+
+        # Assert
+        self.assertEqual(num, 26134589)
