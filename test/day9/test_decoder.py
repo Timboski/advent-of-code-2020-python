@@ -37,3 +37,15 @@ class TestBoot(unittest.TestCase):
 
         # Assert
         self.assertEqual(weakness, 62)
+
+    def test_validate_puzzle2_answer(self):
+        # Arrange
+        path = "advent2020/day9/input"
+        sut = Decoder(path, 25)
+        num = sut.find_first_invalid()
+
+        # Act
+        weakness = sut.find_weakness(num)
+
+        # Assert
+        self.assertEqual(weakness, 3535124)
