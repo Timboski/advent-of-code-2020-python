@@ -1,38 +1,19 @@
 import unittest
 
 from advent2020.day10.adapter_array import AdapterArray
+from parameterized import parameterized
 
 
 class TestAdapterArray(unittest.TestCase):
-    def test_example_input_1(self):
+    @parameterized.expand([("Example 1", "test/day10/example_input_1", 35),
+                           ("Example 2", "test/day10/example_input_2", 220),
+                           ("Regression", "advent2020/day10/input", 2450)])
+    def test_puzzle_1(self, test_name: str, path: str, expected_result: int):
         # Arrange
-        path = "test/day10/example_input_1"
         sut = AdapterArray(path)
 
         # Act
         num = sut.find_sum()
 
         # Assert
-        self.assertEqual(num, 35)
-
-    def test_example_input_2(self):
-        # Arrange
-        path = "test/day10/example_input_2"
-        sut = AdapterArray(path)
-
-        # Act
-        num = sut.find_sum()
-
-        # Assert
-        self.assertEqual(num, 220)
-
-    def test_validate_puzzle1_answer(self):
-        # Arrange
-        path = "advent2020/day10/input"
-        sut = AdapterArray(path)
-
-        # Act
-        num = sut.find_sum()
-
-        # Assert
-        self.assertEqual(num, 2450)
+        self.assertEqual(num, expected_result)
