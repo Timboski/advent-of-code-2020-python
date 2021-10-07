@@ -30,9 +30,10 @@ class TestBoot(unittest.TestCase):
         # Arrange
         path = "test/day9/example_input"
         sut = Decoder(path, 5)
+        num = sut.find_first_invalid()
 
         # Act
-        weakness = sut.find_weakness(127)
+        weakness = sut.find_weakness(num)
 
         # Assert
         self.assertEqual(weakness, 62)
