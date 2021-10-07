@@ -13,7 +13,7 @@ class TestAdapterArray(unittest.TestCase):
         num = sut.find_sum()
 
         # Assert
-        self.assertEqual(num, 7)
+        self.assertEqual(num, 35)
 
     def test_example_input_2(self):
         # Arrange
