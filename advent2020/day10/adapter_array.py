@@ -19,4 +19,12 @@ class AdapterArray:
         return ones * threes
 
     def find_num_combinations(self) -> int:
-        pass
+        combinations = {0: 1}
+
+        def value(index: int):
+            return combinations[index] if index in combinations else 0
+
+        for i in self._joltages[1:]:
+            combinations[i] = value(i - 1) + value(i - 2) + value(i - 3)
+
+        return combinations[self._joltages[-1]]
