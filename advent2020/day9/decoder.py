@@ -9,13 +9,11 @@ class Decoder:
         self._data = [int(i) for i in ReadFile.lines(path)]
 
     def find_first_invalid(self) -> int:
-        i = self._len
-        while i < len(self._data):
+        for i in range(self._len, len(self._data), 1):
             history = self._data[i - self._len:i]
             current = self._data[i]
             if not Decoder._is_solution(current, history):
                 return current
-            i += 1
         raise ValueError("No invalid entry found")
 
     def _is_solution(current: int, history: List[int]):
