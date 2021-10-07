@@ -25,3 +25,14 @@ class TestBoot(unittest.TestCase):
 
         # Assert
         self.assertEqual(num, 26134589)
+
+    def test_example_input_weakness(self):
+        # Arrange
+        path = "test/day9/example_input"
+        sut = Decoder(path, 5)
+
+        # Act
+        weakness = sut.find_weakness(127)
+
+        # Assert
+        self.assertEqual(weakness, 62)
