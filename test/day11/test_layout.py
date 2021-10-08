@@ -29,6 +29,18 @@ class TestLayout(unittest.TestCase):
         # Assert
         self.assertFalse(res)
 
+    @parameterized.expand([("example_input", 0), ("example_round_5", 37)])
+    def test_occupied_seat_count(self, input_file: str, expected_count: int):
+        # Arrange
+        test_path = "test/day11/"
+        sut = Layout.from_file(test_path + input_file)
+
+        # Act
+        count = sut.occupied_seat_count()
+
+        # Assert
+        self.assertEqual(count, expected_count)
+
     @parameterized.expand([("example_input", "example_round_1")])
     def test_simulate_round(self, input_file: str, expected_result_file: str):
         # Arrange
