@@ -5,7 +5,10 @@ from parameterized import parameterized
 
 
 class TestSeatingSimulation(unittest.TestCase):
-    @parameterized.expand([("Example", "test/day11/example_input", 37)])
+    @parameterized.expand([
+        ("Example", "test/day11/example_input", 37),
+        ("Regression", "advent2020/day11/input", 2152),
+    ])
     def test_puzzle_1(self, test_name: str, path: str, expected_result: int):
         # Arrange
         sut = SeatingSimulation(path)
