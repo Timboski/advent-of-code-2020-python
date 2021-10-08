@@ -5,7 +5,10 @@ from parameterized import parameterized
 
 
 class TestLayout(unittest.TestCase):
-    @parameterized.expand([("example_input"), ("example_round_1")])
+    @parameterized.expand([
+        ("example_input"),
+        ("example_round_1"),
+    ])
     def test_is_same_state(self, input_file: str):
         # Arrange
         test_path = "test/day11/"
@@ -29,7 +32,10 @@ class TestLayout(unittest.TestCase):
         # Assert
         self.assertFalse(res)
 
-    @parameterized.expand([("example_input", 0), ("example_round_5", 37)])
+    @parameterized.expand([
+        ("example_input", 0),
+        ("example_round_5", 37),
+    ])
     def test_occupied_seat_count(self, input_file: str, expected_count: int):
         # Arrange
         test_path = "test/day11/"
@@ -41,7 +47,14 @@ class TestLayout(unittest.TestCase):
         # Assert
         self.assertEqual(count, expected_count)
 
-    @parameterized.expand([("example_input", "example_round_1")])
+    @parameterized.expand([
+        ("example_input", "example_round_1"),
+        ("example_round_1", "example_round_2"),
+        ("example_round_2", "example_round_3"),
+        ("example_round_3", "example_round_4"),
+        ("example_round_4", "example_round_5"),
+        ("example_round_5", "example_round_5"),
+    ])
     def test_simulate_round(self, input_file: str, expected_result_file: str):
         # Arrange
         test_path = "test/day11/"
