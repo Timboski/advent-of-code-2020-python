@@ -16,6 +16,9 @@ class Layout:
         return Layout(ReadFile.lines(path))
 
     def is_same_state(self, other: Layout) -> bool:
+        if not isinstance(other, Layout):
+            return False
+
         if self.y_size != other.y_size:
             return False
 
