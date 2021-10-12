@@ -31,3 +31,6 @@ class Course:
                 raise ValueError(f"Unsupported instruction {instruction}")
 
         return abs(position.north) + abs(position.east)
+
+    def find_distance_using_waypoint(self) -> int:
+        pass
