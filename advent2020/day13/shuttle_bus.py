@@ -11,4 +11,4 @@ class ShuttleBus:
     def puzzle_1(self) -> int:
         sut = Timetable(self._busses)
         bus, time = sut.find_next_bus(self._start_time)
-        return bus * (time - self._start_time)
+        return bus * time
