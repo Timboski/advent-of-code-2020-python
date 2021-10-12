@@ -1,0 +1,19 @@
+import unittest
+
+from advent2020.day12.course import Course
+from parameterized import parameterized
+
+
+class TestCourse(unittest.TestCase):
+    @parameterized.expand([
+        ("Example", "test/day12/example_input", 25),
+    ])
+    def test_puzzle_1(self, test_name: str, path: str, expected_result: int):
+        # Arrange
+        sut = Course(path)
+
+        # Act
+        dist = sut.find_distance()
+
+        # Assert
+        self.assertEqual(dist, expected_result)
