@@ -7,6 +7,7 @@ from parameterized import parameterized
 class TestShuttleBus(unittest.TestCase):
     @parameterized.expand([
         ("Example", "test/day13/example_input", 295),
+        ("Regression", "advent2020/day13/input", 3269),
     ])
     def test_puzzle_1(self, test_name: str, path: str, expected_result: int):
         # Arrange
