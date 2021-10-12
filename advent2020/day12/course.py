@@ -33,4 +33,27 @@ class Course:
         return abs(position.north) + abs(position.east)
 
     def find_distance_using_waypoint(self) -> int:
-        pass
+        position = Position(0, 0, Heading.east)
+        waypoint = Position(1, 10)
+        for instruction in self._course:
+            op = instruction[0]
+            value = int(instruction[1:])
+
+            if op == 'N':
+                waypoint = waypoint.move(Heading.north, value)
+            elif op == 'S':
+                waypoint = waypoint.move(Heading.south, value)
+            elif op == 'E':
+                waypoint = waypoint.move(Heading.east, value)
+            elif op == 'W':
+                waypoint = waypoint.move(Heading.west, value)
+            elif op == 'L':
+                waypoint = waypoint.rotate(-value)
+            elif op == 'R':
+                waypoint = waypoint.rotate(value)
+            elif op == 'F':
+                position = position.move_towards_waypoint(waypoint, value)
+            else:
+                raise ValueError(f"Unsupported instruction {instruction}")
+
+        return abs(position.north) + abs(position.east)
