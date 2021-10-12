@@ -21,6 +21,7 @@ class TestCourse(unittest.TestCase):
 
     @parameterized.expand([
         ("Example", "test/day12/example_input", 286),
+        ("Example", "advent2020/day12/input", 29839),
     ])
     def test_puzzle_2(self, test_name: str, path: str, expected_result: int):
         # Arrange
