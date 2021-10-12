@@ -21,6 +21,7 @@ class TestSeatingSimulation(unittest.TestCase):
 
     @parameterized.expand([
         ("Example", "test/day11/example_input", 26),
+        ("Regression", "advent2020/day11/input", 1937),
     ])
     def test_puzzle_2(self, test_name: str, path: str, expected_result: int):
         # Arrange
