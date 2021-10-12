@@ -8,16 +8,18 @@ from advent2020.utils.read_file import ReadFile
 class Layout:
     offsets = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
 
-    def __init__(self, state: List[str]) -> None:
+    def __init__(self, state: List[str], alternate_strategy: bool = False) -> None:
         self._state = state
         self.x_size = len(state[0])
         self.y_size = len(state)
-        self._seat_threshold = 4
-        self._num_occupied_neighbours = self._num_occupied_neighbours_adjacent
+        self._seat_threshold = 5 if alternate_strategy else 4
+        self._num_occupied_neighbours = (self._num_occupied_neighbours_adjacent
+                                         if alternate_strategy else
+                                         self._num_occupied_neighbours_adjacent)
 
     @staticmethod
-    def from_file(path: str) -> Layout:
-        return Layout(ReadFile.lines(path))
+    def from_file(path: str, *, alternate_strategy: bool = False) -> Layout:
+        return Layout(ReadFile.lines(path), alternate_strategy)
 
     def is_same_state(self, other: Layout) -> bool:
         if not isinstance(other, Layout):
