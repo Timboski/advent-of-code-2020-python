@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List
+from typing import List, Tuple
 
 from advent2020.utils.read_file import ReadFile
 
@@ -12,8 +12,9 @@ class Layout:
         self._state = state
         self.x_size = len(state[0])
         self.y_size = len(state)
+        self._alternate_strategy = alternate_strategy
         self._seat_threshold = 5 if alternate_strategy else 4
-        self._num_occupied_neighbours = (self._num_occupied_neighbours_adjacent
+        self._num_occupied_neighbours = (self._num_occupied_neighbours_visible
                                          if alternate_strategy else
                                          self._num_occupied_neighbours_adjacent)
 
@@ -38,7 +39,8 @@ class Layout:
         return sum([row.count('#') for row in self._state])
 
     def simulate_round(self) -> Layout:
-        return Layout([self._simulate_row(y) for y in range(self.y_size)])
+        return Layout([self._simulate_row(y) for y in range(self.y_size)],
+                      alternate_strategy=self._alternate_strategy)
 
     def _simulate_row(self, y: int) -> str:
         return "".join([self._simulate_cell(x, y) for x in range(self.x_size)])
@@ -61,6 +63,31 @@ class Layout:
             [1 for xo, yo in self.offsets if self._cell_occupied(x + xo, y + yo)])
 
     def _cell_occupied(self, x: int, y: int) -> bool:
-        if (x < 0) or (y < 0) or (x >= self.x_size) or (y >= self.y_size):
+        if self._cell_out_of_range(x, y):
             return False
         return self._state[y][x] == '#'
+
+    def _num_occupied_neighbours_visible(self, x: int, y: int) -> int:
+        return sum([1 for offset in self.offsets if self._cell_visible(x, y, offset)])
+
+    def _cell_visible(self, x: int, y: int, offset: Tuple[int]) -> bool:
+        xo, yo = offset
+        while True:
+            x += xo
+            y += yo
+            if self._cell_out_of_range(x, y):
+                return False  # Reached edge of layout - no occupied seat seen
+
+            seat_state = self._state[y][x]
+            if seat_state == '#':
+                return True  # Occupied seat spotted
+            if seat_state == 'L':
+                return False  # Empty seat spotted
+
+            # No seat seen - loop again moving in the same direction
+            # (Check that this is an empty floor space)
+            if seat_state != '.':
+                raise ValueError("Unexpected seat state")
+
+    def _cell_out_of_range(self, x: int, y: int) -> bool:
+        return (x < 0) or (y < 0) or (x >= self.x_size) or (y >= self.y_size)
