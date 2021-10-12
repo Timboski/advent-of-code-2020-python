@@ -6,10 +6,14 @@ from advent2020.utils.read_file import ReadFile
 
 
 class Layout:
+    offsets = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+
     def __init__(self, state: List[str]) -> None:
         self._state = state
         self.x_size = len(state[0])
         self.y_size = len(state)
+        self._seat_threshold = 4
+        self._num_occupied_neighbours = self._num_occupied_neighbours_adjacent
 
     @staticmethod
     def from_file(path: str) -> Layout:
@@ -46,13 +50,13 @@ class Layout:
             # Empty seat - becomes occupied if no adjacent seats occupied.
             return '#' if occupied == 0 else 'L'
         if start_state == '#':
-            # Occupied seat - becomes empty if 4 or more adjacent seats occupied.
-            return 'L' if occupied >= 4 else '#'
+            # Occupied seat - becomes empty if adjacent occupied seats hits threshold.
+            return 'L' if occupied >= self._seat_threshold else '#'
         raise ValueError("Unexpected seat state")
 
-    def _num_occupied_neighbours(self, x: int, y: int) -> int:
-        offsets = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
-        return sum([1 for xo, yo in offsets if self._cell_occupied(x + xo, y + yo)])
+    def _num_occupied_neighbours_adjacent(self, x: int, y: int) -> int:
+        return sum(
+            [1 for xo, yo in self.offsets if self._cell_occupied(x + xo, y + yo)])
 
     def _cell_occupied(self, x: int, y: int) -> bool:
         if (x < 0) or (y < 0) or (x >= self.x_size) or (y >= self.y_size):
