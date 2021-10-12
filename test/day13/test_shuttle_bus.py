@@ -18,3 +18,16 @@ class TestShuttleBus(unittest.TestCase):
 
         # Assert
         self.assertEqual(ans, expected_result)
+
+    @parameterized.expand([
+        ("Example", "test/day13/example_input", 1068781),
+    ])
+    def test_puzzle_2(self, test_name: str, path: str, expected_result: int):
+        # Arrange
+        sut = ShuttleBus(path)
+
+        # Act
+        ans = sut.puzzle_2()
+
+        # Assert
+        self.assertEqual(ans, expected_result)
