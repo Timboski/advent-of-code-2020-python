@@ -8,6 +8,8 @@ class Heading(Enum):
     west = 3
 
     def turn(self, degrees: int):
+        if degrees % 90:
+            raise ValueError(f"Only 90 degree turns expected, not {degrees}")
         steps = degrees // 90
         new_heading = (self.value + steps) % 4
         return Heading(new_heading)
